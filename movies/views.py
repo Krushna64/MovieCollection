@@ -81,6 +81,8 @@ class CollectionView(APIView):
         try:
             serializer = CollectionSerializer(data=request.data)
             if serializer.is_valid():
+                if Collection.objects.filter(user=request.user, title=request.data['title']).exists():
+                    return Response("A collection with this title already exists for this user.", status=status.HTTP_400_BAD_REQUEST)
                 collection = serializer.save(user=request.user)
                 return Response({'collection_uuid': str(collection.uuid)}, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -92,6 +94,8 @@ class CollectionView(APIView):
             collection = Collection.objects.get(uuid=uuid)
             serializer = CollectionSerializer(collection, data=request.data)
             if serializer.is_valid():
+                if Collection.objects.filter(user=request.user, title=request.data['title']).exists():
+                    return Response("A collection with this title already exists for this user.", status=status.HTTP_400_BAD_REQUEST)
                 serializer.save()
                 return Response({'collection_uuid': str(collection.uuid)})  # Since no response was given returned uuid
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
