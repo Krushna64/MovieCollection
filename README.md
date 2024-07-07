@@ -43,10 +43,11 @@ Create a superuser (for admin access):
 
 To run the tests, `cd` into the directory where `manage.py` is:
 ```sh
-(venv)$ python manage.py test api
+(venv)$ python manage.py test
 ```
 
-Run the server:
+## Run the server
+
 ```sh
 (venv)$ python manage.py runserver
 ```
