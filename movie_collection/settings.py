@@ -115,9 +115,6 @@ SIMPLE_JWT = {
 
 AUTH_USER_MODEL = 'movies.User'
 
-MOVIE_API_USERNAME = env('MOVIE_API_USERNAME')
-MOVIE_API_PASSWORD = env('MOVIE_API_PASSWORD')
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
