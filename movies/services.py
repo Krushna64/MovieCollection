@@ -3,7 +3,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 import urllib3
 
-
+# Disables warnings when using requests
 urllib3.disable_warnings()
 
 
@@ -23,7 +23,7 @@ class MovieAPIService:
     def _make_request(self, url, retries=3):
         for _ in range(retries):
             try:
-                response = requests.get(url, auth=self.auth, timeout=5, verify=False)
+                response = requests.get(url, auth=self.auth, timeout=5, verify=False)   # verify=False means disable SSL certificate validation
                 if response.status_code == 200:
                     return response
             except requests.RequestException as e:
