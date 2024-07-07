@@ -16,7 +16,7 @@ $ python -m venv venv
 $ venv\Scripts\activate
 ```
 
-Upgrade pip:
+Upgrade pip (Optional):
 
 ```sh
 (venv)$ python -m pip install -U pip
